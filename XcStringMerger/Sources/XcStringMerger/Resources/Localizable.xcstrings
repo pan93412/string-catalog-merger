@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Merge" : {
+      "comment" : "Strategy",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合併"
+          }
+        }
+      }
+    },
+    "Merge translated" : {
+      "comment" : "Strategy",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只合併翻好的"
+          }
+        }
+      }
+    },
+    "No such language: (code)" : {
+      "comment" : "Error description",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有這個語言：(code)"
+          }
+        }
+      }
+    },
+    "Replace" : {
+      "comment" : "Strategy",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取代"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
