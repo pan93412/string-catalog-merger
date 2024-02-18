@@ -144,6 +144,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = FFDABFBD2B81222100E61DCB;
 			packageReferences = (

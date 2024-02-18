@@ -1,5 +1,147 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "Current (HEAD) catalog JSON" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前（HEAD）的Catalog JSON"
+          }
+        }
+      }
+    },
+    "Decode failed" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解碼失敗"
+          }
+        }
+      }
+    },
+    "Deserialize from JSON failed: %@" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法反序列化JSON：%@"
+          }
+        }
+      }
+    },
+    "Encode failed" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編碼失敗"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "發生錯誤"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語言"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        }
+      }
+    },
+    "Output Catalog" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輸出的Catalog"
+          }
+        }
+      }
+    },
+    "Process" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行"
+          }
+        }
+      }
+    },
+    "Serialize to JSON failed: %@" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法序列化為JSON：%@"
+          }
+        }
+      }
+    },
+    "Strategy" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "策略"
+          }
+        }
+      }
+    },
+    "Translated catelog JSON" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯好的Catalog JSON"
+          }
+        }
+      }
+    },
+    "Translated: %@ %%" : {
+      "comment" : "the percentage of the translated strings",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯進度：%@ %%"
+          }
+        }
+      }
+    },
+    "Unknown error happened." : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "發生未知錯誤"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }
