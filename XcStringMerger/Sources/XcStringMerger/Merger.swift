@@ -35,7 +35,7 @@ public class XcStringMerger {
           currentLocalizations.removeValue(forKey: lang)
         }
 
-        mergedStrings[stringKey] = Localizations(localizations: currentLocalizations)
+        mergedStrings[stringKey] = localizationsOfCurrentCatalog.withNewLocalizations(currentLocalizations)
 
         continue
       }
@@ -44,13 +44,13 @@ public class XcStringMerger {
       if strategy == .mergeTranslated, stringUnitOfTranslated.stringUnit.state != "translated" {
         NSLog("string %@ has not been reviewed in %@ – use the current one (not merge)", stringKey, lang)
 
-        mergedStrings[stringKey] = Localizations(localizations: currentLocalizations)
+        mergedStrings[stringKey] = localizationsOfCurrentCatalog.withNewLocalizations(currentLocalizations)
         continue
       }
 
       // replace the stringUnit with the currentOne
       currentLocalizations[lang] = stringUnitOfTranslated
-      mergedStrings[stringKey] = Localizations(localizations: currentLocalizations)
+      mergedStrings[stringKey] = localizationsOfCurrentCatalog.withNewLocalizations(currentLocalizations)
     }
 
     return StringCatalogV1(sourceLanguage: currentCatalog.sourceLanguage, strings: mergedStrings, version: currentCatalog.version)

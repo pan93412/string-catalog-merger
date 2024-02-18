@@ -18,19 +18,27 @@ final class MergerTests: XCTestCase {
           stringUnit: StringUnit(state: "translated", value: "你好")
         ),
       ]),
-      "World": Localizations(localizations: [
-        "zh-Hans": LocalizedString(
-          stringUnit: StringUnit(state: "translated", value: "世界")
-        ),
-        "zh-Hant": LocalizedString(
-          stringUnit: StringUnit(state: "needs_review", value: "你好")
-        ),
-      ]),
-      "Apple": Localizations(localizations: [
-        "zh-Hans": LocalizedString(
-          stringUnit: StringUnit(state: "translated", value: "苹果")
-        ),
-      ]),
+      "World": Localizations(
+        comment: "suffix of Hello",
+        extractionState: nil,
+        localizations: [
+          "zh-Hans": LocalizedString(
+            stringUnit: StringUnit(state: "translated", value: "世界")
+          ),
+          "zh-Hant": LocalizedString(
+            stringUnit: StringUnit(state: "needs_review", value: "你好")
+          ),
+        ]
+      ),
+      "Apple": Localizations(
+        comment: nil,
+        extractionState: "manual",
+        localizations: [
+          "zh-Hans": LocalizedString(
+            stringUnit: StringUnit(state: "translated", value: "苹果")
+          ),
+        ]
+      ),
     ],
     version: "1.0"
   )
@@ -43,16 +51,24 @@ final class MergerTests: XCTestCase {
           stringUnit: StringUnit(state: "translated", value: "你好")
         ),
       ]),
-      "World": Localizations(localizations: [
-        "zh-Hans": LocalizedString(
-          stringUnit: StringUnit(state: "translated", value: "世界")
-        ),
-      ]),
-      "Apple": Localizations(localizations: [
-        "zh-Hant": LocalizedString(
-          stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-        ),
-      ]),
+      "World": Localizations(
+        comment: "suffix of Hello",
+        extractionState: nil,
+        localizations: [
+          "zh-Hans": LocalizedString(
+            stringUnit: StringUnit(state: "translated", value: "世界")
+          ),
+        ]
+      ),
+      "Apple": Localizations(
+        comment: nil,
+        extractionState: "manual",
+        localizations: [
+          "zh-Hant": LocalizedString(
+            stringUnit: StringUnit(state: "needs_review", value: "蘋果")
+          ),
+        ]
+      ),
     ],
     version: "1.0"
   )
@@ -76,19 +92,27 @@ final class MergerTests: XCTestCase {
             stringUnit: StringUnit(state: "translated", value: "你好")
           ),
         ]),
-        "World": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "世界")
-          ),
-        ]),
-        "Apple": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "苹果")
-          ),
-          "zh-Hant": LocalizedString(
-            stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-          ),
-        ]),
+        "World": Localizations(
+          comment: "suffix of Hello",
+          extractionState: nil,
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "世界")
+            ),
+          ]
+        ),
+        "Apple": Localizations(
+          comment: nil,
+          extractionState: "manual",
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "苹果")
+            ),
+            "zh-Hant": LocalizedString(
+              stringUnit: StringUnit(state: "needs_review", value: "蘋果")
+            ),
+          ]
+        ),
       ],
       version: "1.0"
     ))
@@ -109,22 +133,30 @@ final class MergerTests: XCTestCase {
             stringUnit: StringUnit(state: "translated", value: "你好")
           ),
         ]),
-        "World": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "世界")
-          ),
-          "zh-Hant": LocalizedString(
-            stringUnit: StringUnit(state: "needs_review", value: "你好")
-          ),
-        ]),
-        "Apple": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "苹果")
-          ),
-          "zh-Hant": LocalizedString(
-            stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-          ),
-        ]),
+        "World": Localizations(
+          comment: "suffix of Hello",
+          extractionState: nil,
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "世界")
+            ),
+            "zh-Hant": LocalizedString(
+              stringUnit: StringUnit(state: "needs_review", value: "你好")
+            ),
+          ]
+        ),
+        "Apple": Localizations(
+          comment: nil,
+          extractionState: "manual",
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "苹果")
+            ),
+            "zh-Hant": LocalizedString(
+              stringUnit: StringUnit(state: "needs_review", value: "蘋果")
+            ),
+          ]
+        ),
       ],
       version: "1.0"
     ))
@@ -145,19 +177,27 @@ final class MergerTests: XCTestCase {
             stringUnit: StringUnit(state: "translated", value: "你好")
           ),
         ]),
-        "World": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "世界")
-          ),
-          "zh-Hant": LocalizedString(
-            stringUnit: StringUnit(state: "needs_review", value: "你好")
-          ),
-        ]),
-        "Apple": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "苹果")
-          ),
-        ]),
+        "World": Localizations(
+          comment: "suffix of Hello",
+          extractionState: nil,
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "世界")
+            ),
+            "zh-Hant": LocalizedString(
+              stringUnit: StringUnit(state: "needs_review", value: "你好")
+            ),
+          ]
+        ),
+        "Apple": Localizations(
+          comment: nil,
+          extractionState: "manual",
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(state: "translated", value: "苹果")
+            ),
+          ]
+        ),
       ],
       version: "1.0"
     ))

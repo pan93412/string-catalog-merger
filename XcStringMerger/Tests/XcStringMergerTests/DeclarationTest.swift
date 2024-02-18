@@ -14,6 +14,7 @@ final class DeclarationTests: XCTestCase {
       "sourceLanguage" : "en",
       "strings" : {
         "Hello, world!" : {
+          "comment" : "Post install",
           "localizations" : {
             "zh-Hans" : {
               "stringUnit" : {
@@ -30,11 +31,18 @@ final class DeclarationTests: XCTestCase {
     let expected = StringCatalogV1(
       sourceLanguage: "en",
       strings: [
-        "Hello, world!": Localizations(localizations: [
-          "zh-Hans": LocalizedString(
-            stringUnit: StringUnit(state: "translated", value: "你好，世界")
-          ),
-        ]),
+        "Hello, world!": Localizations(
+          comment: "Post install",
+          extractionState: nil,
+          localizations: [
+            "zh-Hans": LocalizedString(
+              stringUnit: StringUnit(
+                state: "translated",
+                value: "你好，世界"
+              )
+            ),
+          ]
+        ),
       ],
       version: "1.0"
     )
