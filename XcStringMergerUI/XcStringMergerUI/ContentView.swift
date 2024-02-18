@@ -69,6 +69,10 @@ struct ContentView: View {
   }
 
   private func process() {
+    // cancel the current workingTask if there is one
+    // (it should not be happened)
+    workingTask?.cancel()
+
     workingTask = Task.detached {
       defer { Task { @MainActor in
         workingTask = nil
