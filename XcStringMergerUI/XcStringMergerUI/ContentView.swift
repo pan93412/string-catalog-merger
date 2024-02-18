@@ -30,44 +30,7 @@ struct ContentView: View {
 
         TextField("Language", text: $document.input.languageCode)
 
-        Button("Process") {
-          workingTask = Task.detached {
-            defer { Task { @MainActor in
-              workingTask = nil
-            } }
-
-            do {
-              let input = await document.input
-
-              let currentCatalog = try await decodeCatalog(of: input.currentCatalogRaw)
-              let translatedCatalog = try await decodeCatalog(of: input.translatedCatalogRaw)
-
-              let merger = XcStringMerger(current: currentCatalog, translated: translatedCatalog)
-              let merged = merger.mergeTranslation(of: input.languageCode, by: input.strategy)
-
-              let translatedPercentage = merged.strings.map { _, localizations -> Double in
-                guard let localization = localizations.localizations[input.languageCode] else {
-                  return 0.0
-                }
-
-                return localization.stringUnit.state == "translated" ? 1.0 : 0.0
-              }.reduce(0, +) / Double(merged.strings.count)
-
-              let outputCatalogJSON = try await encodeCatalog(of: merged)
-
-              await MainActor.run {
-                outputCatalog = OutputCatalog(
-                  outputCatalogJSON: outputCatalogJSON,
-                  translatedPercentage: translatedPercentage
-                )
-              }
-            } catch {
-              await MainActor.run {
-                self.error = error
-              }
-            }
-          }
-        }
+        Button("Process", action: process)
         .disabled(workingTask != nil)
       }
 
@@ -131,6 +94,45 @@ struct ContentView: View {
     }
 
     return result
+  }
+
+  private func process() {
+    workingTask = Task.detached {
+      defer { Task { @MainActor in
+        workingTask = nil
+      } }
+
+      do {
+        let input = await document.input
+
+        let currentCatalog = try await decodeCatalog(of: input.currentCatalogRaw)
+        let translatedCatalog = try await decodeCatalog(of: input.translatedCatalogRaw)
+
+        let merger = XcStringMerger(current: currentCatalog, translated: translatedCatalog)
+        let merged = merger.mergeTranslation(of: input.languageCode, by: input.strategy)
+
+        let translatedPercentage = merged.strings.map { _, localizations -> Double in
+          guard let localization = localizations.localizations[input.languageCode] else {
+            return 0.0
+          }
+
+          return localization.stringUnit.state == "translated" ? 1.0 : 0.0
+        }.reduce(0, +) / Double(merged.strings.count)
+
+        let outputCatalogJSON = try await encodeCatalog(of: merged)
+
+        await MainActor.run {
+          outputCatalog = OutputCatalog(
+            outputCatalogJSON: outputCatalogJSON,
+            translatedPercentage: translatedPercentage
+          )
+        }
+      } catch {
+        await MainActor.run {
+          self.error = error
+        }
+      }
+    }
   }
 }
 
