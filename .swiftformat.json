@@ -77,7 +77,6 @@ redundantReturn,                  \
 redundantSelf,                    \
 strongifiedSelf
 
-
 # Options for basic rules
 
 --extensionacl on-declarations
