@@ -8,14 +8,14 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>1</integer>
 			<key>CFBundleTypeName</key>
-			<string>Merger Bundle</string>
+			<string>Merger Document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.pan93.XcStringMergerUI.mergerDocument</string>
+				<string>com.pan93.xcstringmergerdoc</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
@@ -24,18 +24,21 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
 			<key>UTTypeDescription</key>
-			<string>Merger Bundle</string>
+			<string>Merger Document</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>com.pan93.XcStringMergerUI.mergerDocument</string>
+			<string>com.pan93.xcstringmergerdoc</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>mergeBundle</string>
-					<string>meb</string>
+					<string>mergerdoc</string>
 				</array>
 			</dict>
 		</dict>

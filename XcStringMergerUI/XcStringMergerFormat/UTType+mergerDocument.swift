@@ -8,5 +8,5 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-  static let mergerDocument = UTType(exportedAs: "com.pan93.XcStringMergerUI.mergerDocument")
+  static let mergerDocument = UTType(exportedAs: "com.pan93.xcstringmergerdoc")
 }
