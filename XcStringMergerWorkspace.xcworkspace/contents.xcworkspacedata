@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:XcStringMerger">
+   </FileRef>
+   <FileRef
       location = "group:XcStringMergerUI/XcStringMergerUI.xcodeproj">
    </FileRef>
 </Workspace>
