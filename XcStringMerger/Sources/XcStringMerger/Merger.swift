@@ -79,9 +79,9 @@ public class XcStringMerger {
 
     public var description: String {
       switch self {
-      case .replace: "Replace"
-      case .merge: "Merge"
-      case .mergeTranslated: "Merge translated"
+      case .replace: NSLocalizedString("Replace", comment: "Strategy")
+      case .merge: NSLocalizedString("Merge", comment: "Strategy")
+      case .mergeTranslated: NSLocalizedString("Merge translated", comment: "Strategy")
       }
     }
   }
