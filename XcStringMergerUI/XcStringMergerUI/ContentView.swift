@@ -94,7 +94,7 @@ struct ContentView: View {
         HStack {
           Text("Output Catalog")
           Spacer()
-          Text("Translated: \(outputCatalog.translatedPercentageString)")
+          Text("Translated: \(outputCatalog.translatedPercentageString) %", comment: "the percentage of the translated strings")
         }
       }
     }
@@ -144,7 +144,7 @@ class OutputCatalog {
   }
 
   var translatedPercentageString: String {
-    String(format: "%.2f %%", translatedPercentage * 100)
+    String(format: "%.2f", translatedPercentage * 100)
   }
 }
 
@@ -154,7 +154,7 @@ extension OutputCatalog? {
       return output.translatedPercentageString
     }
 
-    return "0.00 %"
+    return "0.00"
   }
 }
 
