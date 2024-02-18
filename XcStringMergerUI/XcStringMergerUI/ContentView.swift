@@ -10,11 +10,7 @@ import SwiftUIIntrospect
 import XcStringMerger
 
 struct ContentView: View {
-  @State var currentCatalogRaw: String = ""
-  @State var translatedCatalogRaw: String = ""
-
-  @State var strategy: XcStringMerger.Strategy = .merge
-  @State var languageCode: LanguageCode = ""
+  @EnvironmentObject var document: MergerDocument
 
   @State var outputCatalog: OutputCatalog? = nil
   @State var workingTask: Task<Void, Never>?
@@ -23,7 +19,7 @@ struct ContentView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
-        Picker(selection: $strategy, label: Text("Strategy")) {
+        Picker(selection: $document.input.strategy, label: Text("Strategy")) {
           ForEach([
             XcStringMerger.Strategy.merge,
             .mergeTranslated, .replace
@@ -32,7 +28,7 @@ struct ContentView: View {
           }
         }
 
-        TextField("Language", text: $languageCode)
+        TextField("Language", text: $document.input.languageCode)
 
         Button("Process") {
           workingTask = Task.detached {
@@ -41,28 +37,34 @@ struct ContentView: View {
             } }
 
             do {
-              let currentCatalog = try decodeCatalog(of: currentCatalogRaw)
-              let translatedCatalog = try decodeCatalog(of: translatedCatalogRaw)
+              let input = await document.input
+
+              let currentCatalog = try await decodeCatalog(of: input.currentCatalogRaw)
+              let translatedCatalog = try await decodeCatalog(of: input.translatedCatalogRaw)
 
               let merger = XcStringMerger(current: currentCatalog, translated: translatedCatalog)
-              let merged = merger.mergeTranslation(of: languageCode, by: strategy)
+              let merged = merger.mergeTranslation(of: input.languageCode, by: input.strategy)
 
               let translatedPercentage = merged.strings.map { _, localizations -> Double in
-                guard let localization = localizations.localizations[languageCode] else {
+                guard let localization = localizations.localizations[input.languageCode] else {
                   return 0.0
                 }
 
                 return localization.stringUnit.state == "translated" ? 1.0 : 0.0
               }.reduce(0, +) / Double(merged.strings.count)
 
-              let outputCatalogJSON = try encodeCatalog(of: merged)
+              let outputCatalogJSON = try await encodeCatalog(of: merged)
 
-              outputCatalog = OutputCatalog(
-                outputCatalogJSON: outputCatalogJSON,
-                translatedPercentage: translatedPercentage
-              )
+              await MainActor.run {
+                outputCatalog = OutputCatalog(
+                  outputCatalogJSON: outputCatalogJSON,
+                  translatedPercentage: translatedPercentage
+                )
+              }
             } catch {
-              self.error = error
+              await MainActor.run {
+                self.error = error
+              }
             }
           }
         }
@@ -72,14 +74,14 @@ struct ContentView: View {
       HStack {
         VStack(alignment: .leading) {
           Section("Current (HEAD) catalog JSON") {
-            CodeEditor(content: $currentCatalogRaw)
+            CodeEditor(content: $document.input.currentCatalogRaw)
               .frame(idealHeight: 200)
           }
         }
 
         VStack(alignment: .leading) {
           Section("Translated catelog JSON") {
-            CodeEditor(content: $translatedCatalogRaw)
+            CodeEditor(content: $document.input.translatedCatalogRaw)
               .frame(idealHeight: 200)
           }
         }

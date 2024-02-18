@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49C2B81C0D3004E8383 /* MergerInput.swift */; };
+		FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */; };
+		FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F4A02B81C395004E8383 /* MergerDocument.swift */; };
 		FFDABFCA2B81222100E61DCB /* XcStringMergerUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDABFC92B81222100E61DCB /* XcStringMergerUIApp.swift */; };
 		FFDABFCC2B81222100E61DCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDABFCB2B81222100E61DCB /* ContentView.swift */; };
 		FFDABFCE2B81222400E61DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDABFCD2B81222400E61DCB /* Assets.xcassets */; };
@@ -17,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF68F49C2B81C0D3004E8383 /* MergerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerInput.swift; sourceTree = "<group>"; };
+		FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+mergerDocument.swift"; sourceTree = "<group>"; };
+		FF68F4A02B81C395004E8383 /* MergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
+		FF68F4A22B81C737004E8383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FFDABFC62B81222100E61DCB /* XcStringMergerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcStringMergerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDABFC92B81222100E61DCB /* XcStringMergerUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcStringMergerUIApp.swift; sourceTree = "<group>"; };
 		FFDABFCB2B81222100E61DCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,9 +46,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF68F49B2B81C079004E8383 /* XcStringMergerFormat */ = {
+			isa = PBXGroup;
+			children = (
+				FF68F49C2B81C0D3004E8383 /* MergerInput.swift */,
+				FF68F4A02B81C395004E8383 /* MergerDocument.swift */,
+				FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */,
+			);
+			path = XcStringMergerFormat;
+			sourceTree = "<group>";
+		};
 		FFDABFBD2B81222100E61DCB = {
 			isa = PBXGroup;
 			children = (
+				FF68F49B2B81C079004E8383 /* XcStringMergerFormat */,
 				FFDABFC82B81222100E61DCB /* XcStringMergerUI */,
 				FFDABFC72B81222100E61DCB /* Products */,
 			);
@@ -58,6 +76,7 @@
 		FFDABFC82B81222100E61DCB /* XcStringMergerUI */ = {
 			isa = PBXGroup;
 			children = (
+				FF68F4A22B81C737004E8383 /* Info.plist */,
 				FFDABFC92B81222100E61DCB /* XcStringMergerUIApp.swift */,
 				FFDABFE22B8128B000E61DCB /* CodeEditor.swift */,
 				FFDABFCB2B81222100E61DCB /* ContentView.swift */,
@@ -156,6 +175,9 @@
 			files = (
 				FFDABFE32B8128B000E61DCB /* CodeEditor.swift in Sources */,
 				FFDABFCC2B81222100E61DCB /* ContentView.swift in Sources */,
+				FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */,
+				FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */,
+				FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */,
 				FFDABFCA2B81222100E61DCB /* XcStringMergerUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +312,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XcStringMergerUI/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -328,6 +351,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XcStringMergerUI/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
