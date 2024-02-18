@@ -29,7 +29,7 @@ struct ContentView: View {
         TextField("Language", text: $document.input.languageCode)
 
         Button("Process", action: process)
-        .disabled(workingTask != nil)
+          .disabled(workingTask != nil)
       }
 
       HStack {

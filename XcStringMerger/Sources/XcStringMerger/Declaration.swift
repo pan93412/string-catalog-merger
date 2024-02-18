@@ -22,17 +22,17 @@ public struct Localizations: Hashable, Equatable, Codable, Clonable {
   public let extractionState: String? // ex. "manual"
   public let localizations: [LanguageCode: LocalizedString]
 
-  public init(comment: String?, extractionState: String?, localizations: [LanguageCode : LocalizedString]) {
+  public init(comment: String?, extractionState: String?, localizations: [LanguageCode: LocalizedString]) {
     self.comment = comment
     self.extractionState = extractionState
     self.localizations = localizations
   }
 
-  public init(localizations: [LanguageCode : LocalizedString]) {
+  public init(localizations: [LanguageCode: LocalizedString]) {
     self.init(comment: nil, extractionState: nil, localizations: localizations)
   }
 
-  public func withNewLocalizations(_ newLocalizations: [LanguageCode : LocalizedString]) -> Self {
+  public func withNewLocalizations(_ newLocalizations: [LanguageCode: LocalizedString]) -> Self {
     Self(comment: comment, extractionState: extractionState, localizations: newLocalizations)
   }
 
