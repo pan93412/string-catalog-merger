@@ -150,11 +150,7 @@ class OutputCatalog {
 
 extension OutputCatalog? {
   var translatedPercentageString: String {
-    if let output = self {
-      return output.translatedPercentageString
-    }
-
-    return "0.00"
+    self?.translatedPercentageString ?? "0.00"
   }
 }
 
