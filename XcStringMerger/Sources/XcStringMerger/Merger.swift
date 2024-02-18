@@ -1,5 +1,5 @@
-import os
 import Foundation
+import os
 
 public class XcStringMerger {
   let currentCatalog: StringCatalogV1
@@ -12,14 +12,14 @@ public class XcStringMerger {
 
   /// Merge the translation from new to base based on the strategy.
   public func mergeTranslation(of lang: LanguageCode, by strategy: Strategy) -> StringCatalogV1 {
-    var mergedStrings = Dictionary<StringKey, Localizations>()
+    var mergedStrings = [StringKey: Localizations]()
 
-    for (stringKey, localizationsOfTranslatedCatalog) in self.translatedCatalog.strings {
+    for (stringKey, localizationsOfTranslatedCatalog) in translatedCatalog.strings {
       guard let localizationsOfCurrentCatalog = currentCatalog.strings[stringKey] else {
         NSLog("string %@ is not presented in the current catalog", stringKey)
         continue
       }
-      
+
       var currentLocalizations = localizationsOfCurrentCatalog.localizations.clone()
 
       guard let stringUnitOfTranslated = localizationsOfTranslatedCatalog.localizations[lang] else {
@@ -36,7 +36,7 @@ public class XcStringMerger {
       }
 
       // for .merge and .replace, we allow replacing.
-      if strategy == .mergeTranslated && stringUnitOfTranslated.stringUnit.state != "translated" {
+      if strategy == .mergeTranslated, stringUnitOfTranslated.stringUnit.state != "translated" {
         NSLog("string %@ has not been reviewed in %@ – use the current one (not merge)", stringKey, lang)
 
         mergedStrings[stringKey] = Localizations(localizations: currentLocalizations)
@@ -92,7 +92,7 @@ public enum XcStringMergerErrors: Error, LocalizedError {
 
   public var errorDescription: String? {
     switch self {
-    case .noLanguage(let code): NSLocalizedString("No such language: \(code)", comment: "Error description")
+    case let .noLanguage(code): NSLocalizedString("No such language: \(code)", comment: "Error description")
     }
   }
 }

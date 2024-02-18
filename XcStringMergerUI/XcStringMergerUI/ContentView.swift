@@ -12,7 +12,7 @@ import XcStringMerger
 struct ContentView: View {
   @EnvironmentObject var document: MergerDocument
 
-  @State var outputCatalog: OutputCatalog? = nil
+  @State var outputCatalog: OutputCatalog?
   @State var workingTask: Task<Void, Never>?
   @State var error: Error?
 
@@ -22,7 +22,7 @@ struct ContentView: View {
         Picker(selection: $document.input.strategy, label: Text("Strategy")) {
           ForEach([
             XcStringMerger.Strategy.merge,
-            .mergeTranslated, .replace
+            .mergeTranslated, .replace,
           ], id: \.self) { strategy in
             Text(strategy.description)
           }
@@ -170,9 +170,9 @@ enum ContentError: Error, LocalizedError {
       return String(localized: "Encode failed")
     case .decodeFailed:
       return String(localized: "Decode failed")
-    case .serializeFailed(let error):
+    case let .serializeFailed(error):
       return String(localized: "Serialize to JSON failed: \(error.localizedDescription)")
-    case .deserializeFailed(let error):
+    case let .deserializeFailed(error):
       return String(localized: "Deserialize from JSON failed: \(error.localizedDescription)")
     }
   }

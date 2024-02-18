@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct XcStringMergerUIApp: App {
   var body: some Scene {
-    DocumentGroup(newDocument: { MergerDocument() }) { configuration in
+    DocumentGroup(newDocument: { MergerDocument() }) { _ in
       ContentView()
     }
   }

@@ -1,0 +1,17 @@
+disabled_rules: # 執行時排除掉的規則
+  - unused_import
+  - unused_declaration
+  - capture_variable
+  # - void_return
+  # - colon
+  # - comma
+  # - control_statement
+opt_in_rules: # 一些規則僅僅是可選的
+  - sorted_imports
+  # - empty_count
+  # - missing_docs
+  # 可以通過執行如下指令來查找所有可用的規則:
+  # swiftlint rules
+included: # 執行 linting 時包含的路徑。如果出現這個 `--path` 會被忽略。
+  # - Source
+excluded: # 執行 linting 時忽略的路徑。 優先級比 `included` 更高。

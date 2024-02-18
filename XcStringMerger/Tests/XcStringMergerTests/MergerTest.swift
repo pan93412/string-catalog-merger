@@ -1,5 +1,5 @@
-import XCTest
 @testable import XcStringMerger
+import XCTest
 
 final class MergerTests: XCTestCase {
   let mockCurrentCatalog = StringCatalogV1(
@@ -11,7 +11,7 @@ final class MergerTests: XCTestCase {
         ),
         "zh-Hant": LocalizedString(
           stringUnit: StringUnit(state: "translated", value: "你好")
-        )
+        ),
       ]),
       "World": Localizations(localizations: [
         "zh-Hans": LocalizedString(
@@ -25,7 +25,7 @@ final class MergerTests: XCTestCase {
         "zh-Hans": LocalizedString(
           stringUnit: StringUnit(state: "translated", value: "苹果")
         ),
-      ])
+      ]),
     ],
     version: "1.0"
   )
@@ -36,7 +36,7 @@ final class MergerTests: XCTestCase {
       "Hello": Localizations(localizations: [
         "zh-Hant": LocalizedString(
           stringUnit: StringUnit(state: "translated", value: "你好")
-        )
+        ),
       ]),
       "World": Localizations(localizations: [
         "zh-Hans": LocalizedString(
@@ -46,8 +46,8 @@ final class MergerTests: XCTestCase {
       "Apple": Localizations(localizations: [
         "zh-Hant": LocalizedString(
           stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-        )
-      ])
+        ),
+      ]),
     ],
     version: "1.0"
   )
@@ -69,7 +69,7 @@ final class MergerTests: XCTestCase {
           ),
           "zh-Hant": LocalizedString(
             stringUnit: StringUnit(state: "translated", value: "你好")
-          )
+          ),
         ]),
         "World": Localizations(localizations: [
           "zh-Hans": LocalizedString(
@@ -82,8 +82,8 @@ final class MergerTests: XCTestCase {
           ),
           "zh-Hant": LocalizedString(
             stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-          )
-        ])
+          ),
+        ]),
       ],
       version: "1.0"
     ))
@@ -102,7 +102,7 @@ final class MergerTests: XCTestCase {
           ),
           "zh-Hant": LocalizedString(
             stringUnit: StringUnit(state: "translated", value: "你好")
-          )
+          ),
         ]),
         "World": Localizations(localizations: [
           "zh-Hans": LocalizedString(
@@ -118,8 +118,8 @@ final class MergerTests: XCTestCase {
           ),
           "zh-Hant": LocalizedString(
             stringUnit: StringUnit(state: "needs_review", value: "蘋果")
-          )
-        ])
+          ),
+        ]),
       ],
       version: "1.0"
     ))
@@ -138,7 +138,7 @@ final class MergerTests: XCTestCase {
           ),
           "zh-Hant": LocalizedString(
             stringUnit: StringUnit(state: "translated", value: "你好")
-          )
+          ),
         ]),
         "World": Localizations(localizations: [
           "zh-Hans": LocalizedString(
@@ -152,7 +152,7 @@ final class MergerTests: XCTestCase {
           "zh-Hans": LocalizedString(
             stringUnit: StringUnit(state: "translated", value: "苹果")
           ),
-        ])
+        ]),
       ],
       version: "1.0"
     ))

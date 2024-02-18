@@ -35,7 +35,7 @@ extension XcStringMerger.Strategy: Codable {
       try container.encode("replace")
     }
   }
-  
+
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let rawValue = try container.decode(String.self)

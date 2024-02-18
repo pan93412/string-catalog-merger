@@ -3,7 +3,7 @@ public typealias StringKey = String
 
 public struct StringCatalogV1: Hashable, Equatable, Codable, Clonable {
   public let sourceLanguage: String
-  public let strings: Dictionary<StringKey, Localizations>
+  public let strings: [StringKey: Localizations]
 
   public let version: String
 
@@ -13,7 +13,7 @@ public struct StringCatalogV1: Hashable, Equatable, Codable, Clonable {
 }
 
 public struct Localizations: Hashable, Equatable, Codable, Clonable {
-  public let localizations: Dictionary<LanguageCode, LocalizedString>
+  public let localizations: [LanguageCode: LocalizedString]
 
   public func clone() -> Self {
     Self(localizations: localizations.clone())
@@ -29,7 +29,7 @@ public struct LocalizedString: Hashable, Equatable, Codable, Clonable {
 }
 
 public struct StringUnit: Hashable, Equatable, Codable, Clonable {
-  public let state: String  // ex. "translated"
+  public let state: String // ex. "translated"
   public let value: String
 
   public func clone() -> Self {
@@ -42,11 +42,11 @@ public protocol Clonable {
 }
 
 extension Dictionary: Clonable
-where
-Value: Clonable
+  where
+  Value: Clonable
 {
   public func clone() -> Self {
-    Self.init(uniqueKeysWithValues: self.enumerated().map { (_, element) in
+    Self(uniqueKeysWithValues: enumerated().map { _, element in
       (element.key, element.value.clone())
     })
   }

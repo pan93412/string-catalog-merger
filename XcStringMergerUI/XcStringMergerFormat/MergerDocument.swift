@@ -17,20 +17,20 @@ class MergerDocument: ReferenceFileDocument {
   init() {
     input = MergerInput()
   }
-  
+
   required init(configuration: ReadConfiguration) throws {
     guard let data = configuration.file.regularFileContents
     else {
       throw CocoaError(.fileReadCorruptFile)
     }
-    self.input = try JSONDecoder().decode(MergerInput.self, from: data)
+    input = try JSONDecoder().decode(MergerInput.self, from: data)
   }
-  
-  func snapshot(contentType: UTType) throws -> MergerInput {
+
+  func snapshot(contentType _: UTType) throws -> MergerInput {
     input
   }
 
-  func fileWrapper(snapshot: MergerInput, configuration: WriteConfiguration) throws -> FileWrapper {
+  func fileWrapper(snapshot: MergerInput, configuration _: WriteConfiguration) throws -> FileWrapper {
     let data = try JSONEncoder().encode(snapshot)
     let fileWrapper = FileWrapper(regularFileWithContents: data)
     return fileWrapper
