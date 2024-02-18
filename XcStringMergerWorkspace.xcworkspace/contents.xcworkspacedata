@@ -2,9 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:XcStringMergerUI/XcStringMergerUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:XcStringMerger">
    </FileRef>
    <FileRef
-      location = "group:XcStringMergerUI/XcStringMergerUI.xcodeproj">
+      location = "group:makefile">
+   </FileRef>
+   <FileRef
+      location = "group:.swiftformat.json">
+   </FileRef>
+   <FileRef
+      location = "group:.swiftlint.yml">
    </FileRef>
 </Workspace>
