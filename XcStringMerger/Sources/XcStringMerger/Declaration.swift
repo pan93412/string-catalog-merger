@@ -6,7 +6,7 @@
 public typealias LanguageCode = String
 public typealias StringKey = String
 
-public struct StringCatalogV1: Hashable, Equatable, Codable, Clonable {
+public struct StringCatalogV1: Hashable, Equatable, Codable, Clonable, Sendable {
   public let sourceLanguage: String
   public let strings: [StringKey: Localizations]
 
@@ -17,7 +17,7 @@ public struct StringCatalogV1: Hashable, Equatable, Codable, Clonable {
   }
 }
 
-public struct Localizations: Hashable, Equatable, Codable, Clonable {
+public struct Localizations: Hashable, Equatable, Codable, Clonable, Sendable {
   public let comment: String?
   public let extractionState: String? // ex. "manual"
   public let localizations: [LanguageCode: LocalizedString]
@@ -41,7 +41,7 @@ public struct Localizations: Hashable, Equatable, Codable, Clonable {
   }
 }
 
-public struct LocalizedString: Hashable, Equatable, Codable, Clonable {
+public struct LocalizedString: Hashable, Equatable, Codable, Clonable, Sendable {
   public let stringUnit: StringUnit
 
   public func clone() -> Self {
@@ -49,7 +49,7 @@ public struct LocalizedString: Hashable, Equatable, Codable, Clonable {
   }
 }
 
-public struct StringUnit: Hashable, Equatable, Codable, Clonable {
+public struct StringUnit: Hashable, Equatable, Codable, Clonable, Sendable {
   public let state: String // ex. "translated"
   public let value: String
 

@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 
-class MergerDocument: ReferenceFileDocument {
+final class MergerDocument: ReferenceFileDocument {
   @Published var input: MergerInput
 
   static var readableContentTypes: [UTType] { [.mergerDocument] }

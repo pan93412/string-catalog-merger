@@ -6,7 +6,7 @@
 import Foundation
 import XcStringMerger
 
-struct MergerInput: Identifiable, Codable {
+struct MergerInput: Identifiable, Codable, Sendable {
   var id = UUID()
 
   var currentCatalogRaw: String = ""

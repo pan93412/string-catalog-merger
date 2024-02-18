@@ -56,7 +56,7 @@ public class XcStringMerger {
     return StringCatalogV1(sourceLanguage: currentCatalog.sourceLanguage, strings: mergedStrings, version: currentCatalog.version)
   }
 
-  public enum Strategy: CustomStringConvertible, Equatable {
+  public enum Strategy: CustomStringConvertible, Equatable, Sendable {
     /// Replace the whole localization of a given language from translatedCatalog to currentCatalog,
     /// which means that:
     ///

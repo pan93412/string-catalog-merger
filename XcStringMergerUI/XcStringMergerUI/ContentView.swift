@@ -7,6 +7,7 @@ import SwiftUI
 import SwiftUIIntrospect
 import XcStringMerger
 
+@MainActor
 struct ContentView: View {
   @EnvironmentObject var document: MergerDocument
 
@@ -28,7 +29,7 @@ struct ContentView: View {
 
         TextField("Language", text: $document.input.languageCode)
 
-        Button("Process", action: process)
+        Button("Process", action: { process() })
           .disabled(workingTask != nil)
       }
 
@@ -67,33 +68,6 @@ struct ContentView: View {
     .padding()
   }
 
-  private func decodeCatalog(of catalogString: String) throws -> StringCatalogV1 {
-    let decoder = JSONDecoder()
-
-    guard let catalogData = catalogString.data(using: .utf8) else {
-      throw ContentError.encodeFailed
-    }
-
-    return try Result {
-      try decoder.decode(StringCatalogV1.self, from: catalogData)
-    }.mapError(ContentError.deserializeFailed).get()
-  }
-
-  private func encodeCatalog(of catalog: StringCatalogV1) throws -> String {
-    let encoder = JSONEncoder()
-    encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
-
-    let catalogData = try Result {
-      try encoder.encode(catalog)
-    }.mapError(ContentError.serializeFailed).get()
-
-    guard let result = String(data: catalogData, encoding: .utf8) else {
-      throw ContentError.decodeFailed
-    }
-
-    return result
-  }
-
   private func process() {
     workingTask = Task.detached {
       defer { Task { @MainActor in
@@ -101,10 +75,12 @@ struct ContentView: View {
       } }
 
       do {
-        let input = await document.input
+        let input = await MainActor.run {
+          document.input
+        }
 
-        let currentCatalog = try await decodeCatalog(of: input.currentCatalogRaw)
-        let translatedCatalog = try await decodeCatalog(of: input.translatedCatalogRaw)
+        let currentCatalog = try decodeCatalog(of: input.currentCatalogRaw)
+        let translatedCatalog = try decodeCatalog(of: input.translatedCatalogRaw)
 
         let merger = XcStringMerger(current: currentCatalog, translated: translatedCatalog)
         let merged = merger.mergeTranslation(of: input.languageCode, by: input.strategy)
@@ -117,7 +93,7 @@ struct ContentView: View {
           return localization.stringUnit.state == "translated" ? 1.0 : 0.0
         }.reduce(0, +) / Double(merged.strings.count)
 
-        let outputCatalogJSON = try await encodeCatalog(of: merged)
+        let outputCatalogJSON = try encodeCatalog(of: merged)
 
         await MainActor.run {
           outputCatalog = OutputCatalog(
@@ -132,6 +108,33 @@ struct ContentView: View {
       }
     }
   }
+}
+
+private func decodeCatalog(of catalogString: String) throws -> StringCatalogV1 {
+  let decoder = JSONDecoder()
+
+  guard let catalogData = catalogString.data(using: .utf8) else {
+    throw ContentError.encodeFailed
+  }
+
+  return try Result {
+    try decoder.decode(StringCatalogV1.self, from: catalogData)
+  }.mapError(ContentError.deserializeFailed).get()
+}
+
+private func encodeCatalog(of catalog: StringCatalogV1) throws -> String {
+  let encoder = JSONEncoder()
+  encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+
+  let catalogData = try Result {
+    try encoder.encode(catalog)
+  }.mapError(ContentError.serializeFailed).get()
+
+  guard let result = String(data: catalogData, encoding: .utf8) else {
+    throw ContentError.decodeFailed
+  }
+
+  return result
 }
 
 class OutputCatalog {
