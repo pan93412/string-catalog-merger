@@ -26,7 +26,7 @@
 		FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+mergerDocument.swift"; sourceTree = "<group>"; };
 		FF68F4A02B81C395004E8383 /* MergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
 		FF68F4A22B81C737004E8383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		FFDABFC62B81222100E61DCB /* XcStringMergerUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcStringMergerUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFDABFC62B81222100E61DCB /* String Catalog Merger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "String Catalog Merger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDABFC92B81222100E61DCB /* XcStringMergerUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcStringMergerUIApp.swift; sourceTree = "<group>"; };
 		FFDABFCB2B81222100E61DCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFDABFCD2B81222400E61DCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		FFDABFC72B81222100E61DCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFDABFC62B81222100E61DCB /* XcStringMergerUI.app */,
+				FFDABFC62B81222100E61DCB /* String Catalog Merger.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 				FFDABFE02B81282B00E61DCB /* SwiftUIIntrospect */,
 			);
 			productName = XcStringMergerUI;
-			productReference = FFDABFC62B81222100E61DCB /* XcStringMergerUI.app */;
+			productReference = FFDABFC62B81222100E61DCB /* String Catalog Merger.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -318,7 +318,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XcStringMergerUI/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "String Catalog Merger";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -336,7 +335,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pan93.XcStringMergerUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "String Catalog Merger";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
@@ -359,7 +358,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XcStringMergerUI/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "String Catalog Merger";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -377,7 +375,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pan93.XcStringMergerUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "String Catalog Merger";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
