@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF356CD22B81F4B900FA3EA1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FF356CD12B81F4B900FA3EA1 /* Localizable.xcstrings */; };
 		FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49C2B81C0D3004E8383 /* MergerInput.swift */; };
 		FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */; };
 		FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F4A02B81C395004E8383 /* MergerDocument.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF356CD12B81F4B900FA3EA1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		FF68F49C2B81C0D3004E8383 /* MergerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerInput.swift; sourceTree = "<group>"; };
 		FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+mergerDocument.swift"; sourceTree = "<group>"; };
 		FF68F4A02B81C395004E8383 /* MergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				FFDABFCD2B81222400E61DCB /* Assets.xcassets */,
 				FFDABFCF2B81222400E61DCB /* XcStringMergerUI.entitlements */,
 				FFDABFD02B81222400E61DCB /* Preview Content */,
+				FF356CD12B81F4B900FA3EA1 /* Localizable.xcstrings */,
 			);
 			path = XcStringMergerUI;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				FFDABFD22B81222400E61DCB /* Preview Assets.xcassets in Resources */,
 				FFDABFCE2B81222400E61DCB /* Assets.xcassets in Resources */,
+				FF356CD22B81F4B900FA3EA1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
