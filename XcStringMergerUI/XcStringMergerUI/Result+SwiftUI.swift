@@ -7,7 +7,7 @@ import Foundation
 
 extension Result {
   var successValue: Success? {
-    if case .success(let success) = self {
+    if case let .success(success) = self {
       return success
     }
 
@@ -15,7 +15,7 @@ extension Result {
   }
 
   var errorValue: Failure? {
-    if case .failure(let failure) = self {
+    if case let .failure(failure) = self {
       return failure
     }
 
