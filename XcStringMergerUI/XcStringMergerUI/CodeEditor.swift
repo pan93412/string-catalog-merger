@@ -4,24 +4,59 @@
 // SCMerger is short for "String Catalog Merger", a project founded by Pan93412.
 
 import SwiftUI
-import SwiftUIIntrospect
 
-struct CodeEditor: View {
+@MainActor
+struct CodeEditor: NSViewRepresentable {
+  private let textViewDelegation: NSTextViewDelegate
+  @Binding public var content: String
+  
+  public init(content: Binding<String>) {
+    self._content = content
+    textViewDelegation = CodeEditorDelegation(self._content)
+  }
+
+  public let scrollView = NSTextView.scrollableTextView()
+
+  public func makeNSView(context: Context) -> NSScrollView {
+    guard let textView = scrollView.documentView as? NSTextView else {
+      return scrollView
+    }
+
+    textView.font = .monospacedSystemFont(ofSize: 0, weight: .regular)
+
+    // disable all checks for richText
+    textView.isAutomaticQuoteSubstitutionEnabled = false
+    textView.isGrammarCheckingEnabled = false
+    textView.isAutomaticDashSubstitutionEnabled = false
+    textView.isAutomaticSpellingCorrectionEnabled = false
+    textView.isAutomaticLinkDetectionEnabled = false
+    textView.isAutomaticTextReplacementEnabled = false
+    textView.isAutomaticTextCompletionEnabled = false
+    textView.isContinuousSpellCheckingEnabled = false
+    textView.isRichText = false
+
+    textView.delegate = textViewDelegation
+
+    return scrollView
+  }
+
+  public func updateNSView(_ scrollView: NSScrollView, context: Context) {
+    guard let textView = scrollView.documentView as? NSTextView else {
+      return
+    }
+
+    textView.string = content
+  }
+}
+
+final private class CodeEditorDelegation: NSObject, NSTextViewDelegate {
   @Binding var content: String
 
-  var body: some View {
-    TextEditor(text: $content)
-      .introspect(.textEditor, on: .macOS(.v11, .v12, .v13, .v14)) { textEditor in
-        textEditor.isAutomaticQuoteSubstitutionEnabled = false
-        textEditor.isGrammarCheckingEnabled = false
-        textEditor.isAutomaticDashSubstitutionEnabled = false
-        textEditor.isAutomaticSpellingCorrectionEnabled = false
-        textEditor.isAutomaticLinkDetectionEnabled = false
-        textEditor.isAutomaticTextReplacementEnabled = false
-        textEditor.isAutomaticTextCompletionEnabled = false
-        textEditor.isRichText = false
-      }
-      .font(.system(.body, design: .monospaced))
-      .autocorrectionDisabled()
+  public init(_ content: Binding<String>) {
+    self._content = content
+  }
+
+  public func textDidChange(_ notification: Notification) {
+    content = (notification.object as! NSTextView).string
   }
 }
