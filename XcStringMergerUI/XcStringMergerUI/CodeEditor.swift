@@ -58,8 +58,8 @@ struct CodeEditor: NSViewRepresentable {
   }
 }
 
-extension NSScrollView {
-  fileprivate var textView: NSTextView? {
-    self.documentView as? NSTextView
+private extension NSScrollView {
+  var textView: NSTextView? {
+    documentView as? NSTextView
   }
 }
