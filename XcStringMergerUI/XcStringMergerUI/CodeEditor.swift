@@ -7,21 +7,18 @@ import SwiftUI
 
 @MainActor
 struct CodeEditor: NSViewRepresentable {
-  private let textViewDelegation: NSTextViewDelegate
-  @Binding public var content: String
-
-  public init(content: Binding<String>) {
-    _content = content
-    textViewDelegation = CodeEditorDelegation(_content)
-  }
+  @Binding var content: String
 
   public let scrollView = NSTextView.scrollableTextView()
+  public var textView: NSTextView {
+    scrollView.documentView as! NSTextView
+  }
 
-  public func makeNSView(context _: Context) -> NSScrollView {
-    guard let textView = scrollView.documentView as? NSTextView else {
-      return scrollView
-    }
+  func makeCoordinator() -> Coordinator {
+    Coordinator(self)
+  }
 
+  func makeNSView(context: Context) -> NSScrollView {
     textView.font = .monospacedSystemFont(ofSize: 0, weight: .regular)
 
     // disable all checks for richText
@@ -35,28 +32,27 @@ struct CodeEditor: NSViewRepresentable {
     textView.isContinuousSpellCheckingEnabled = false
     textView.isRichText = false
 
-    textView.delegate = textViewDelegation
+    textView.delegate = context.coordinator
 
     return scrollView
   }
 
-  public func updateNSView(_ scrollView: NSScrollView, context _: Context) {
-    guard let textView = scrollView.documentView as? NSTextView else {
-      return
+  func updateNSView(_ scrollView: NSScrollView, context _: Context) {
+    if textView.string != content {
+      textView.string = content
+    }
+  }
+
+  final class Coordinator: NSObject, NSTextViewDelegate {
+    let parent: CodeEditor
+
+    init(_ parent: CodeEditor) {
+      self.parent = parent
     }
 
-    textView.string = content
-  }
-}
-
-private final class CodeEditorDelegation: NSObject, NSTextViewDelegate {
-  @Binding var content: String
-
-  public init(_ content: Binding<String>) {
-    _content = content
-  }
-
-  public func textDidChange(_ notification: Notification) {
-    content = (notification.object as! NSTextView).string
+    func textDidChange(_ notification: Notification) {
+      guard let textView = notification.object as? NSTextView else { return }
+      parent.content = textView.string
+    }
   }
 }
