@@ -10,15 +10,14 @@ struct CodeEditor: NSViewRepresentable {
   @Binding var content: String
 
   public let scrollView = NSTextView.scrollableTextView()
-  public var textView: NSTextView {
-    scrollView.documentView as! NSTextView
-  }
 
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
   func makeNSView(context: Context) -> NSScrollView {
+    guard let textView = scrollView.textView else { return scrollView }
+
     textView.font = .monospacedSystemFont(ofSize: 0, weight: .regular)
 
     // disable all checks for richText
@@ -37,7 +36,9 @@ struct CodeEditor: NSViewRepresentable {
     return scrollView
   }
 
-  func updateNSView(_ scrollView: NSScrollView, context _: Context) {
+  func updateNSView(_ view: NSScrollView, context _: Context) {
+    guard let textView = view.textView else { return }
+
     if textView.string != content {
       textView.string = content
     }
@@ -54,5 +55,11 @@ struct CodeEditor: NSViewRepresentable {
       guard let textView = notification.object as? NSTextView else { return }
       parent.content = textView.string
     }
+  }
+}
+
+extension NSScrollView {
+  fileprivate var textView: NSTextView? {
+    self.documentView as? NSTextView
   }
 }
