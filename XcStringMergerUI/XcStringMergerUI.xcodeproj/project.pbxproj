@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FF356CD22B81F4B900FA3EA1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FF356CD12B81F4B900FA3EA1 /* Localizable.xcstrings */; };
+		FF4A86202B83E01900E82D8D /* Double+percentageString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */; };
+		FF4A86222B83E03F00E82D8D /* OutputCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */; };
+		FF4A86242B83E0BD00E82D8D /* Result+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */; };
 		FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49C2B81C0D3004E8383 /* MergerInput.swift */; };
 		FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */; };
 		FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F4A02B81C395004E8383 /* MergerDocument.swift */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		FF356CD12B81F4B900FA3EA1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+percentageString.swift"; sourceTree = "<group>"; };
+		FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputCatalog.swift; sourceTree = "<group>"; };
+		FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+SwiftUI.swift"; sourceTree = "<group>"; };
 		FF68F49C2B81C0D3004E8383 /* MergerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerInput.swift; sourceTree = "<group>"; };
 		FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+mergerDocument.swift"; sourceTree = "<group>"; };
 		FF68F4A02B81C395004E8383 /* MergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
@@ -82,6 +88,9 @@
 				FFDABFC92B81222100E61DCB /* XcStringMergerUIApp.swift */,
 				FFDABFE22B8128B000E61DCB /* CodeEditor.swift */,
 				FFDABFCB2B81222100E61DCB /* ContentView.swift */,
+				FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */,
+				FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */,
+				FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */,
 				FFDABFCD2B81222400E61DCB /* Assets.xcassets */,
 				FFDABFCF2B81222400E61DCB /* XcStringMergerUI.entitlements */,
 				FFDABFD02B81222400E61DCB /* Preview Content */,
@@ -180,10 +189,13 @@
 			files = (
 				FFDABFE32B8128B000E61DCB /* CodeEditor.swift in Sources */,
 				FFDABFCC2B81222100E61DCB /* ContentView.swift in Sources */,
+				FF4A86222B83E03F00E82D8D /* OutputCatalog.swift in Sources */,
 				FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */,
 				FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */,
+				FF4A86202B83E01900E82D8D /* Double+percentageString.swift in Sources */,
 				FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */,
 				FFDABFCA2B81222100E61DCB /* XcStringMergerUIApp.swift in Sources */,
+				FF4A86242B83E0BD00E82D8D /* Result+SwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

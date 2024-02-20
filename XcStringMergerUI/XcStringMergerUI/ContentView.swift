@@ -10,10 +10,11 @@ import XcStringMerger
 @MainActor
 struct ContentView: View {
   @EnvironmentObject var document: MergerDocument
+  @State var result: Result<OutputCatalog, Error>?
 
-  @State var outputCatalog: OutputCatalog?
-  @State var workingTask: Task<Void, Never>?
-  @State var error: Error?
+  @State private var task: Task<(), Error>?
+
+  private var languageCode: LanguageCode { document.input.languageCode }
 
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
@@ -30,7 +31,7 @@ struct ContentView: View {
         TextField("Language", text: $document.input.languageCode)
 
         Button("Process", action: { process() })
-          .disabled(workingTask != nil)
+          .disabled(task != nil)
       }
 
       HStack {
@@ -50,133 +51,38 @@ struct ContentView: View {
       }
 
       Section {
-        CodeEditor(content: .constant(outputCatalog?.outputCatalogJSON ?? ""))
+        CodeEditor(content: .constant(result?.successValue?.json ?? ""))
           .frame(idealHeight: 200)
       } header: {
+        let percentage = result?.successValue?.getTranslatedPercentageOf(languageCode: languageCode).percentageString ?? "0.00"
+
         HStack {
           Text("Output Catalog")
           Spacer()
-          Text("Translated: \(outputCatalog.translatedPercentageString) %", comment: "the percentage of the translated strings")
+          Text("Translated: \(percentage) %", comment: "the percentage of the translated strings")
         }
       }
     }
-    .alert("Error", isPresented: .constant(error != nil)) {
-      Button("OK") { error = nil }
+    .alert("Error", isPresented: .constant(result?.errorValue != nil)) {
+      Button("OK") { result = nil }
     } message: {
-      Text(error?.localizedDescription ?? String(localized: "Unknown error happened."))
+      Text(result?.errorValue?.localizedDescription ?? String(localized: "Unknown error happened."))
     }
     .padding()
   }
 
+  @MainActor
   private func process() {
-    // cancel the current workingTask if there is one
-    // (it should not be happened)
-    workingTask?.cancel()
-
-    workingTask = Task.detached {
-      defer { Task { @MainActor in
-        workingTask = nil
-      } }
-
-      do {
-        let input = await MainActor.run {
-          document.input
-        }
-
-        let currentCatalog = try decodeCatalog(of: input.currentCatalogRaw)
-        let translatedCatalog = try decodeCatalog(of: input.translatedCatalogRaw)
-
-        let merger = XcStringMerger(current: currentCatalog, translated: translatedCatalog)
-        let merged = merger.mergeTranslation(of: input.languageCode, by: input.strategy)
-
-        let translatedPercentage = merged.strings.map { _, localizations -> Double in
-          guard let localization = localizations.localizations[input.languageCode] else {
-            return 0.0
-          }
-
-          return localization.stringUnit.state == "translated" ? 1.0 : 0.0
-        }.reduce(0, +) / Double(merged.strings.count)
-
-        let outputCatalogJSON = try encodeCatalog(of: merged)
-
-        await MainActor.run {
-          outputCatalog = OutputCatalog(
-            outputCatalogJSON: outputCatalogJSON,
-            translatedPercentage: translatedPercentage
-          )
-        }
-      } catch {
-        await MainActor.run {
-          self.error = error
-        }
+    Task(priority: .userInitiated) { [input = document.input] in
+      defer {
+        self.task = nil
       }
-    }
-  }
-}
 
-private func decodeCatalog(of catalogString: String) throws -> StringCatalogV1 {
-  let decoder = JSONDecoder()
+      let result = await Result.async {
+        try await mergeDecodableCatalog(input)
+      }
 
-  guard let catalogData = catalogString.data(using: .utf8) else {
-    throw ContentError.encodeFailed
-  }
-
-  return try Result {
-    try decoder.decode(StringCatalogV1.self, from: catalogData)
-  }.mapError(ContentError.deserializeFailed).get()
-}
-
-private func encodeCatalog(of catalog: StringCatalogV1) throws -> String {
-  let encoder = JSONEncoder()
-  encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
-
-  let catalogData = try Result {
-    try encoder.encode(catalog)
-  }.mapError(ContentError.serializeFailed).get()
-
-  guard let result = String(data: catalogData, encoding: .utf8) else {
-    throw ContentError.decodeFailed
-  }
-
-  return result
-}
-
-class OutputCatalog {
-  var outputCatalogJSON: String
-  var translatedPercentage: Double
-
-  init(outputCatalogJSON: String, translatedPercentage: Double) {
-    self.outputCatalogJSON = outputCatalogJSON
-    self.translatedPercentage = translatedPercentage
-  }
-
-  var translatedPercentageString: String {
-    String(format: "%.2f", translatedPercentage * 100)
-  }
-}
-
-extension OutputCatalog? {
-  var translatedPercentageString: String {
-    self?.translatedPercentageString ?? "0.00"
-  }
-}
-
-enum ContentError: Error, LocalizedError {
-  case encodeFailed
-  case decodeFailed
-  case serializeFailed(Error)
-  case deserializeFailed(Error)
-
-  var errorDescription: String? {
-    switch self {
-    case .encodeFailed:
-      return String(localized: "Encode failed")
-    case .decodeFailed:
-      return String(localized: "Decode failed")
-    case let .serializeFailed(error):
-      return String(localized: "Serialize to JSON failed: \(error.localizedDescription)")
-    case let .deserializeFailed(error):
-      return String(localized: "Deserialize from JSON failed: \(error.localizedDescription)")
+      self.result = result
     }
   }
 }
