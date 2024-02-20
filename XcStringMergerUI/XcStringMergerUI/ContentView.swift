@@ -4,7 +4,6 @@
 // SCMerger is short for "String Catalog Merger", a project founded by Pan93412.
 
 import SwiftUI
-import SwiftUIIntrospect
 import XcStringMerger
 
 @MainActor

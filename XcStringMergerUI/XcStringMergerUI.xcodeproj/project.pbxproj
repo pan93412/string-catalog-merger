@@ -20,7 +20,6 @@
 		FFDABFCE2B81222400E61DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDABFCD2B81222400E61DCB /* Assets.xcassets */; };
 		FFDABFD22B81222400E61DCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDABFD12B81222400E61DCB /* Preview Assets.xcassets */; };
 		FFDABFDE2B8122B100E61DCB /* XcStringMerger in Frameworks */ = {isa = PBXBuildFile; productRef = FFDABFDD2B8122B100E61DCB /* XcStringMerger */; };
-		FFDABFE12B81282B00E61DCB /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = FFDABFE02B81282B00E61DCB /* SwiftUIIntrospect */; };
 		FFDABFE32B8128B000E61DCB /* CodeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDABFE22B8128B000E61DCB /* CodeEditor.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDABFDE2B8122B100E61DCB /* XcStringMerger in Frameworks */,
-				FFDABFE12B81282B00E61DCB /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +126,6 @@
 			name = XcStringMergerUI;
 			packageProductDependencies = (
 				FFDABFDD2B8122B100E61DCB /* XcStringMerger */,
-				FFDABFE02B81282B00E61DCB /* SwiftUIIntrospect */,
 			);
 			productName = XcStringMergerUI;
 			productReference = FFDABFC62B81222100E61DCB /* String Catalog Merger.app */;
@@ -161,7 +158,6 @@
 			mainGroup = FFDABFBD2B81222100E61DCB;
 			packageReferences = (
 				FFDABFDA2B81227400E61DCB /* XCLocalSwiftPackageReference "../XcStringMerger" */,
-				FFDABFDF2B81282B00E61DCB /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = FFDABFC72B81222100E61DCB /* Products */;
 			projectDirPath = "";
@@ -440,26 +436,10 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		FFDABFDF2B81282B00E61DCB /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		FFDABFDD2B8122B100E61DCB /* XcStringMerger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XcStringMerger;
-		};
-		FFDABFE02B81282B00E61DCB /* SwiftUIIntrospect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FFDABFDF2B81282B00E61DCB /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
