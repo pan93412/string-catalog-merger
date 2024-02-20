@@ -11,6 +11,7 @@
 		FF4A86202B83E01900E82D8D /* Double+percentageString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */; };
 		FF4A86222B83E03F00E82D8D /* OutputCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */; };
 		FF4A86242B83E0BD00E82D8D /* Result+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */; };
+		FF4A86262B84372B00E82D8D /* Result+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A86252B84372B00E82D8D /* Result+Async.swift */; };
 		FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49C2B81C0D3004E8383 /* MergerInput.swift */; };
 		FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */; };
 		FF68F4A12B81C395004E8383 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68F4A02B81C395004E8383 /* MergerDocument.swift */; };
@@ -28,6 +29,7 @@
 		FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+percentageString.swift"; sourceTree = "<group>"; };
 		FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputCatalog.swift; sourceTree = "<group>"; };
 		FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+SwiftUI.swift"; sourceTree = "<group>"; };
+		FF4A86252B84372B00E82D8D /* Result+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Async.swift"; sourceTree = "<group>"; };
 		FF68F49C2B81C0D3004E8383 /* MergerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerInput.swift; sourceTree = "<group>"; };
 		FF68F49E2B81C135004E8383 /* UTType+mergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+mergerDocument.swift"; sourceTree = "<group>"; };
 		FF68F4A02B81C395004E8383 /* MergerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				FFDABFCB2B81222100E61DCB /* ContentView.swift */,
 				FF4A861F2B83E01900E82D8D /* Double+percentageString.swift */,
 				FF4A86212B83E03F00E82D8D /* OutputCatalog.swift */,
+				FF4A86252B84372B00E82D8D /* Result+Async.swift */,
 				FF4A86232B83E0BD00E82D8D /* Result+SwiftUI.swift */,
 				FFDABFCD2B81222400E61DCB /* Assets.xcassets */,
 				FFDABFCF2B81222400E61DCB /* XcStringMergerUI.entitlements */,
@@ -194,6 +197,7 @@
 				FF68F49F2B81C135004E8383 /* UTType+mergerDocument.swift in Sources */,
 				FF4A86202B83E01900E82D8D /* Double+percentageString.swift in Sources */,
 				FF68F49D2B81C0D4004E8383 /* MergerInput.swift in Sources */,
+				FF4A86262B84372B00E82D8D /* Result+Async.swift in Sources */,
 				FFDABFCA2B81222100E61DCB /* XcStringMergerUIApp.swift in Sources */,
 				FF4A86242B83E0BD00E82D8D /* Result+SwiftUI.swift in Sources */,
 			);
@@ -354,7 +358,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pan93.XcStringMergerUI;
 				PRODUCT_NAME = "String Catalog Merger";
@@ -394,7 +398,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pan93.XcStringMergerUI;
 				PRODUCT_NAME = "String Catalog Merger";

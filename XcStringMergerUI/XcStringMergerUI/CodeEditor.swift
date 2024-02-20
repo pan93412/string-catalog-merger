@@ -21,7 +21,7 @@ struct CodeEditor: View {
         textEditor.isAutomaticTextCompletionEnabled = false
         textEditor.isRichText = false
       }
-      .fontDesign(.monospaced)
+      .font(.system(.body, design: .monospaced))
       .autocorrectionDisabled()
   }
 }
