@@ -12,7 +12,7 @@ struct ContentView: View {
   @EnvironmentObject var document: MergerDocument
   @State var result: Result<OutputCatalog, Error>?
 
-  @State private var task: Task<(), Error>?
+  @State private var task: Task<Void, Never>?
 
   private var languageCode: LanguageCode { document.input.languageCode }
 
