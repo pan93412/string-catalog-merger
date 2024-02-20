@@ -28,7 +28,7 @@ extension XcStringMerger.Strategy: Codable {
     case .merge:
       try container.encode("merge")
     case .mergeTranslated:
-      try container.encode("merge_translated")
+      try container.encode("mergeTranslated")
     case .replace:
       try container.encode("replace")
     }
@@ -41,7 +41,8 @@ extension XcStringMerger.Strategy: Codable {
     switch rawValue {
     case "merge":
       self = .merge
-    case "merge_translated":
+    // merge_translated is for <= SCMerger 1.0.3
+    case "merge_translated", "mergeTranslated":
       self = .mergeTranslated
     case "replace":
       self = .replace
