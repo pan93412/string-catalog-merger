@@ -73,7 +73,8 @@ struct ContentView: View {
 
   @MainActor
   private func process() {
-    Task(priority: .userInitiated) { [input = document.input] in
+    task?.cancel()
+    task = Task(priority: .userInitiated) { [input = document.input] in
       defer {
         self.task = nil
       }
