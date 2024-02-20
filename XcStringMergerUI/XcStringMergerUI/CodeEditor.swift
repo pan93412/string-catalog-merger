@@ -9,15 +9,15 @@ import SwiftUI
 struct CodeEditor: NSViewRepresentable {
   private let textViewDelegation: NSTextViewDelegate
   @Binding public var content: String
-  
+
   public init(content: Binding<String>) {
-    self._content = content
-    textViewDelegation = CodeEditorDelegation(self._content)
+    _content = content
+    textViewDelegation = CodeEditorDelegation(_content)
   }
 
   public let scrollView = NSTextView.scrollableTextView()
 
-  public func makeNSView(context: Context) -> NSScrollView {
+  public func makeNSView(context _: Context) -> NSScrollView {
     guard let textView = scrollView.documentView as? NSTextView else {
       return scrollView
     }
@@ -40,7 +40,7 @@ struct CodeEditor: NSViewRepresentable {
     return scrollView
   }
 
-  public func updateNSView(_ scrollView: NSScrollView, context: Context) {
+  public func updateNSView(_ scrollView: NSScrollView, context _: Context) {
     guard let textView = scrollView.documentView as? NSTextView else {
       return
     }
@@ -49,11 +49,11 @@ struct CodeEditor: NSViewRepresentable {
   }
 }
 
-final private class CodeEditorDelegation: NSObject, NSTextViewDelegate {
+private final class CodeEditorDelegation: NSObject, NSTextViewDelegate {
   @Binding var content: String
 
   public init(_ content: Binding<String>) {
-    self._content = content
+    _content = content
   }
 
   public func textDidChange(_ notification: Notification) {
