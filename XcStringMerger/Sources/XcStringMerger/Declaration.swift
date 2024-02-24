@@ -72,3 +72,39 @@ extension Dictionary: Clonable
     })
   }
 }
+
+extension XcStringMerger.Strategy: Codable {
+  enum CodingError: Error {
+    case unknownValue(String)
+  }
+
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+
+    switch self {
+    case .merge:
+      try container.encode("merge")
+    case .mergeTranslated:
+      try container.encode("mergeTranslated")
+    case .replace:
+      try container.encode("replace")
+    }
+  }
+
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    let rawValue = try container.decode(String.self)
+
+    switch rawValue {
+    case "merge":
+      self = .merge
+      // merge_translated is for <= SCMerger 1.0.3
+    case "merge_translated", "mergeTranslated":
+      self = .mergeTranslated
+    case "replace":
+      self = .replace
+    default:
+      throw CodingError.unknownValue(rawValue)
+    }
+  }
+}
