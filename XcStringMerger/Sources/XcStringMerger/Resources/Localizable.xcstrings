@@ -1,6 +1,39 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Decode failed" : {
+      "comment" : "StringCatalogError",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解碼失敗"
+          }
+        }
+      }
+    },
+    "Deserialize from JSON failed: %@" : {
+      "comment" : "StringCatalogError",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法反序列化JSON：%@"
+          }
+        }
+      }
+    },
+    "Encode failed" : {
+      "comment" : "StringCatalogError",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編碼失敗"
+          }
+        }
+      }
+    },
     "Merge" : {
       "comment" : "Strategy",
       "localizations" : {
@@ -47,25 +80,25 @@
         }
       }
     },
-    "No such language: (code)" : {
+    "No such language: %@" : {
       "comment" : "Error description",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "見つかぬ言語：(code)"
+            "value" : "見つかぬ言語：%@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无此语言：(code)"
+            "value" : "无此语言：%@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "沒有這個語言：(code)"
+            "value" : "沒有這個語言：%@"
           }
         }
       }
@@ -89,6 +122,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "取代"
+          }
+        }
+      }
+    },
+    "Serialize to JSON failed: %@" : {
+      "comment" : "StringCatalogError",
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法序列化為JSON：%@"
           }
         }
       }

@@ -11,36 +11,6 @@
         }
       }
     },
-    "Decode failed" : {
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "解碼失敗"
-          }
-        }
-      }
-    },
-    "Deserialize from JSON failed: %@" : {
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法反序列化JSON：%@"
-          }
-        }
-      }
-    },
-    "Encode failed" : {
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編碼失敗"
-          }
-        }
-      }
-    },
     "Error" : {
       "localizations" : {
         "zh-Hant" : {
@@ -87,16 +57,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "執行"
-          }
-        }
-      }
-    },
-    "Serialize to JSON failed: %@" : {
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法序列化為JSON：%@"
           }
         }
       }
