@@ -98,7 +98,7 @@ extension XcStringMerger.Strategy: Codable {
     switch rawValue {
     case "merge":
       self = .merge
-      // merge_translated is for <= SCMerger 1.0.3
+    // merge_translated is for <= SCMerger 1.0.3
     case "merge_translated", "mergeTranslated":
       self = .mergeTranslated
     case "replace":

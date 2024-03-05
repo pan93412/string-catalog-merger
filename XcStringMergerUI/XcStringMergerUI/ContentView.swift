@@ -9,7 +9,7 @@ import XcStringMerger
 @MainActor
 struct ContentView: View {
   @EnvironmentObject var document: MergerDocument
-  @State var result: Result<OutputCatalog, Error>?
+  @State var result: Result<StringCatalogV1, Error>?
 
   @State private var task: Task<Void, Never>?
 
@@ -37,28 +37,30 @@ struct ContentView: View {
         VStack(alignment: .leading) {
           Section("Current (HEAD) catalog JSON") {
             CodeEditor(content: $document.input.currentCatalogRaw)
-              .frame(idealHeight: 200)
+              .frame(minWidth: 300, minHeight: 200)
           }
         }
 
         VStack(alignment: .leading) {
           Section("Translated catelog JSON") {
             CodeEditor(content: $document.input.translatedCatalogRaw)
-              .frame(idealHeight: 200)
+              .frame(minWidth: 300, minHeight: 200)
           }
         }
       }
 
-      Section {
-        CodeEditor(content: .constant(result?.successValue?.json ?? ""))
-          .frame(idealHeight: 200)
-      } header: {
-        let percentage = result?.successValue?.getTranslatedPercentageOf(languageCode: languageCode).percentageString ?? "0.00"
+      if let catalog = result?.successValue {
+        Section {
+          CodeEditor(content: .constant(catalog.json ?? ""))
+            .frame(minWidth: 600, minHeight: 400)
+        } header: {
+          let percentage = catalog.getTranslatedPercentage(in: languageCode).percentage
 
-        HStack {
-          Text("Output Catalog")
-          Spacer()
-          Text("Translated: \(percentage) %", comment: "the percentage of the translated strings")
+          HStack {
+            Text("Output Catalog")
+            Spacer()
+            Text("Translated: \(percentage) %", comment: "the percentage of the translated strings")
+          }
         }
       }
     }
@@ -67,22 +69,27 @@ struct ContentView: View {
     } message: {
       Text(result?.errorValue?.localizedDescription ?? String(localized: "Unknown error happened."))
     }
+    .onReceive(document.$input) { _ in
+      withAnimation {
+        result = nil
+      }
+    }
     .padding()
   }
 
-  @MainActor
   private func process() {
     task?.cancel()
-    task = Task(priority: .userInitiated) { [input = document.input] in
-      defer {
-        self.task = nil
-      }
-
+    task = Task.detached(priority: .userInitiated) { [input = document.input] in
       let result = await Result.async {
-        try await mergeDecodableCatalog(input)
+        try XcStringMerger.merge(of: input)
       }
 
-      self.result = result
+      await MainActor.run {
+        withAnimation {
+          self.result = result
+          task = nil
+        }
+      }
     }
   }
 }
