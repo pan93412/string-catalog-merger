@@ -97,7 +97,7 @@ public enum XcStringMergerErrors: Error, LocalizedError {
 
   public var errorDescription: String? {
     switch self {
-    case let .noLanguage(code): NSLocalizedString("No such language: \(code)", bundle: .module, comment: "Error description")
+    case let .noLanguage(code): String(format: NSLocalizedString("No such language: %@", bundle: .module, comment: "Error description"), code)
     }
   }
 }
